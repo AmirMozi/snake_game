@@ -51,3 +51,26 @@ def init_vars():
 init_vars()
 
 #End Snake info Function 
+
+#Start Show Score Function
+def Show_Score():
+    print("Showing Score : ")
+
+#End Show Score Function 
+
+#Start Game Loop
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+        elif event.type == pygame.KEYDOWN:
+                if(event.key == pygame.K_UP or event.key == ord("w") and direction != "DOWN"):
+                    direction = "UP"
+                elif (event.key == pygame.K_DOWN or event.key == ord("s") and direction != "UP"):
+                    direction = "DOWN"
+                elif (event.key == pygame.K_LEFT or event.key == ord("a") and direction != "RIGHT"):
+                    direction = "LEFT"
+                elif (event.key == pygame.K_RIGHT or event.key == ord("d") and direction != "LEFT"):
+                    direction = "RIGHT"
+#End Game Loop
