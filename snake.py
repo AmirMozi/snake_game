@@ -74,3 +74,31 @@ while True:
                 elif (event.key == pygame.K_RIGHT or event.key == ord("d") and direction != "LEFT"):
                     direction = "RIGHT"
 #End Game Loop
+
+    if direction == "UP" :
+         head_pos[1] -= square_size
+    elif direction == "DOWN":
+         head_pos[1] += square_size
+    elif direction == "LEFT" : 
+         head_pos[0] -= square_size
+    elif direction == "RIGHT":
+         head_pos[0] += square_size
+
+
+    if head_pos[0] < 0:
+         head_pos[0] = frame_size_x - square_size
+    elif head_pos[0] > frame_size_x - square_size:
+         head_pos[0] = 0
+    elif head_pos[1] <0 :
+         head_pos[1] = frame_size_y - square_size
+    elif head_pos[1] > frame_size_y - square_size:
+         head_pos[1] = 0
+
+#Start eating apple 
+    snake_body.insert(0, list(head_pos))
+    if head_pos[0] == food_pos[0] and head_pos[1] == food_pos[1]:
+            score += 1
+            food_spawn = False
+    else:
+            snake_body.pop()
+# End  eating apple
