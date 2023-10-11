@@ -4,8 +4,8 @@ speed = 15
 
 # start windows size 
 
-frame_size_x = 1380
-frame_size_y = 840
+frame_size_x = int(1380)
+frame_size_y = int(840)
 
 
 check_errors = pygame.init()
@@ -19,7 +19,7 @@ else :
 
 pygame.display.set_caption("Snake Game")
 
-Game_window = pygame.display.set_mode(frame_size_x,frame_size_y)
+Game_window = pygame.display.set_mode((frame_size_x,frame_size_y))
 
 
 #start colors set
@@ -122,7 +122,8 @@ while True:
 
     Game_window.fill(black)
     for pos in snake_body:
-         pygame.draw.rect(Game_window,green , pygame.rect(food_pos[0] , food_pos[1] , square_size , square_size))
+         pygame.draw.rect(Game_window,green , pygame.Rect(pos[0] + 2 , pos[1] + 2 , square_size - 2, square_size - 2))
+         pygame.draw.rect(Game_window,red , pygame.Rect(food_pos[0] , food_pos[1] , square_size , square_size))
 #End GFX
 
 #Start GameOver Conditions
