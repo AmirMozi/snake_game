@@ -117,3 +117,20 @@ while True:
          food_spawn = True
 
 #End Spawn Food
+
+#Start GFX
+
+    Game_window.fill(black)
+    for pos in snake_body:
+         pygame.draw.rect(Game_window,green , pygame.rect(food_pos[0] , food_pos[1] , square_size , square_size))
+#End GFX
+
+#Start GameOver Conditions
+    for block in snake_body[1:] :
+         if head_pos[0] == block[0] and head_pos[1] == block[1] :
+              init_vars()
+    
+    Show_Score(1,white, 'consolas' , 20 )
+    pygame.display.update()
+    fps_controller.tick(speed)
+#End GameOver Condition
