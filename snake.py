@@ -4,8 +4,8 @@ speed = 15
 
 # start windows size 
 
-frame_size_x = 720
-frame_size_y = 480
+frame_size_x = 1380
+frame_size_y = 840
 
 
 check_errors = pygame.init()
@@ -33,7 +33,7 @@ blue  = pygame.Color(0,0,255)
 fps_controller = pygame.time.Clock()
 
 #one snake square size
-square_size = 20 
+square_size = 60 
 
 
 #Start snake info Function
@@ -53,8 +53,15 @@ init_vars()
 #End Snake info Function 
 
 #Start Show Score Function
-def Show_Score():
-    print("Showing Score : ")
+def Show_Score(choise , color , font, size):
+    score_font    = pygame.font.SysFont(font , size)
+    score_surface = score_font.render("Score : " + str(score) , True , color)
+    score_rect    = score_surface.get_rect()
+
+    if choise == 1:
+         score_rect.midtop = (frame_size_x / 10 , 15)
+         score_rect.midtop = (frame_size_x / 2, frame_size_y / 1.25)
+         Game_window.blit(score_surface , score_rect) 
 
 #End Show Score Function 
 
@@ -102,3 +109,11 @@ while True:
     else:
             snake_body.pop()
 # End  eating apple
+
+#Start Spawn Food
+    if not food_spawn: 
+         food_pos = [random.randrange(1,(frame_size_x // square_size)) * square_size ,
+                     random.randrange(1,(frame_size_y // square_size)) * square_size]
+         food_spawn = True
+
+#End Spawn Food
